@@ -5,3 +5,4 @@ committing change 0 on day 24
 committing change 1 on day 29
 committing change 6 on day 30
 committing change 1 on day 40
+committing change 3 on day 40
