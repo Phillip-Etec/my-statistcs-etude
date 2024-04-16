@@ -68,7 +68,7 @@ int main()
             command = "git add doc/analysis" + std::to_string(file_suffix) + ".txt";
             std::system(command.c_str());
 
-            command = "git commit --date \""+ std::to_string(dias[i]) + " days ago\" -m \"change number " + std::to_string(changes) + " done succesfully\"";
+            command = "git commit --date \""+ std::to_string(i) + " days ago\" -m \"change number " + std::to_string(changes) + " done succesfully\"";
             changes++;
             std::system(command.c_str());
         }
