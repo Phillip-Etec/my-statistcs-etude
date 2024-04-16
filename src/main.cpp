@@ -15,6 +15,7 @@ int main()
     unsigned int len = 365;
     int dias[len], zerados = 0, qtd_commits = 0;
     int dias_desde = 0; // elapsed dias desde 16 de abril de 2024
+    int changes = 1;
     bool dias_com_commits[len];
 
     for(int i = 0; i<len; i++) {
@@ -52,16 +53,26 @@ int main()
         }
     }
 
-    //for (int i = 0; i<len; i++) {
-        //if(dias_com_commits[i]) {
-            //continue;
-            //printf("Dia %i já tem commit\n", i);
-        //}
-        //for (int k=0; k<dias[i]; k++) {
-            //std::string command = "echo committing change " + std::to_string(k) + " on day " + std::to_string(i) ;
-            //std::system(command.c_str()); // executes the UNIX command "ls -l >test.txt"
-        //}
-    //}
+    for (int i = 0; i<len; i++) {
+        if(dias_com_commits[i]) {
+            continue;
+            printf("Dia %i já tem commit\n", i);
+        }
+
+        for (int k=0; k<dias[i]; k++) {
+            int file_suffix = randal(1, 12);
+            std::string command = "echo committing change " + std::to_string(k) + " on day " + std::to_string(i) ;
+            command = command + " >> doc/analysis" + std::to_string(file_suffix) + ".txt";
+            std::system(command.c_str()); // executes the UNIX command "ls -l >test"
+
+            command = "git add doc/analysis" + std::to_string(file_suffix) + ".txt";
+            std::system(command.c_str());
+
+            command = "git commit --date \""+ std::to_string(dias[i]) + " days ago\" -m \"change number " + std::to_string(changes) + " done succesfully\"";
+            changes++;
+            std::system(command.c_str());
+        }
+    }
 
     /*
      *for (int i=1; i<=len; i++) {
